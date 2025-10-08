@@ -12,7 +12,7 @@ const Asset = sequelize.define('Asset', {
     status:{
         type: DataTypes.ENUM,
         allowNull: false,
-        values: ['Available', 'Under Maintenance','Broken']
+        values: ['Available', 'Assigned','Under Maintenance','Broken']
     }
 });
 

@@ -18,7 +18,15 @@ const ComputerAsset = sequelize.define('ComputerAsset', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    ram:{
+    ram1:{
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    ram2:{
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    totalRam:{
         type: DataTypes.STRING,
         allowNull: false,
     },
