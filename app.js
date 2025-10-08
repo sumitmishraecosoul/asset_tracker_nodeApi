@@ -4,6 +4,7 @@ import sequelize from './Utils/dbConnection.js';
 import { setupSwagger } from './swagger.js';
 import All_User_Routes from './Utils/All_User_Routes.js';
 import All_Models_Relationship from './Utils/All_Models_Relationship.js';
+import { setupAdmin } from './adminConfig.js';
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ sequelize.sync().then(() => {
   console.error('Unable to sync the database:', error);
 });
 
+setupAdmin(app);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server listening on http://localhost:${process.env.PORT}`);
