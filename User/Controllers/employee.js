@@ -21,7 +21,7 @@ employeeController.getEmployeeById = async (req, res) => {
 employeeController.getAllEmployees = async (req, res) => {
     try {
         const employees = await All_Models.Employee.findAll();
-        res.status(200).json({message: 'Employees fetched successfully.'},employees);
+        res.status(200).json({ message: 'Employees fetched successfully.', data: employees });
     } catch (error) {
         res.status(500).json({ message: 'Error fetching employees.', error: error.message });
     }

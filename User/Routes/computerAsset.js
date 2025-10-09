@@ -50,6 +50,10 @@ router.get('/getById', computerAssetController.getComputerAssetById);
  *             type: object
  *             required: [assetId, brand, model, serialNumber, processor, ram1, ram2, totalRam, warrantyStart, warrantyEnd]
  *             properties:
+ *               assetId:
+ *                 type: integer
+ *                 description: References the main Asset.id this computer asset belongs to
+ *                 example: 1
  *               brand:
  *                 type: string
  *                 example: Lenovo

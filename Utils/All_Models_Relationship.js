@@ -13,6 +13,18 @@ const All_Models_Relationship = () => {
     } = All_Models;
 
     // ==============================================================
+    // One-to-Many: Category -> Subcategory
+    // --------------------------------------------------------------
+    CategoryMaster.hasMany(SubcategoryMaster, {
+        foreignKey: 'categoryId',
+        as: 'subCategories',
+    });
+    SubcategoryMaster.belongsTo(CategoryMaster, {
+        foreignKey: 'categoryId',
+        as: 'category',
+    });
+
+    // ==============================================================
     // One-to-Many: Master Tables -> Assets
     // --------------------------------------------------------------
     // CategoryMaster (assetCategoryMaster) -> Assets

@@ -10,6 +10,10 @@ const SubcategoryMaster = sequelize.define('SubcategoryMaster', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    categoryId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
 });
 
 export default SubcategoryMaster;

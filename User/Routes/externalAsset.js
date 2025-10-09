@@ -50,6 +50,10 @@ router.get('/getById', externalAssetController.getExternalAssetById);
  *             type: object
  *             required: [assetId, brand, model, serialNumber, warrantyStart, warrantyEnd]
  *             properties:
+ *               assetId:
+ *                 type: integer
+ *                 description: References the main Asset.id this external asset belongs to
+ *                 example: 1
  *               brand:
  *                 type: string
  *                 example: Canon

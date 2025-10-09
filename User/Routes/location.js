@@ -34,3 +34,4 @@ router.get('/getAllSites', locationController.getAllSites);
 export default router;
 
 
+
