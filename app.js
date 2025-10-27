@@ -12,7 +12,8 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:5050',
+  // origin: 'http://localhost:5050',
+  origin: 'http://asset.thrivebrands-hrms.thrivebrands.ai',
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
