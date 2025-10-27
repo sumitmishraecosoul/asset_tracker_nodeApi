@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import AdminJS from 'adminjs';
 import AdminJSExpress from '@adminjs/express';
 import { Database, Resource } from '@adminjs/sequelize';
-
+import importExportFeature from '@adminjs/import-export';
 import sequelize from './Utils/dbConnection.js';
 import All_Models from './Utils/All_Models.js';
 
@@ -24,7 +24,7 @@ export async function setupAdmin(app) {
 
   const resources = [
     { resource: User, options: { navigation: { name: 'Administration', icon: 'User' } } },
-    { resource: Employee, options: { navigation: { name: 'Employees', icon: 'User' } } },
+    { resource: Employee, features: [importExportFeature], options: { navigation: { name: 'Employees', icon: 'User' } } },
     { resource: CategoryMaster, options: { navigation: { name: 'Masters', icon: 'Settings' } } },
     { resource: SubcategoryMaster, options: { navigation: { name: 'Masters', icon: 'Settings' } } },
     { resource: LocationMaster, options: { navigation: { name: 'Masters', icon: 'Settings' } } },

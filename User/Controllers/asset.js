@@ -228,6 +228,58 @@ assetController.checkOutAsset = async (req, res) => {
     }
 }
 
+assetController.getAssetsByStatus = async (req, res) => {
+    try {
+        const assets = await All_Models.Asset.findAll({
+            attributes: ['status']
+        });
+
+        const statusCounts = {
+            "Available": 0,
+            "Assigned": 0,
+            "Under Maintenance": 0,
+            "Broken": 0
+        };
+
+        assets.forEach(asset => {
+            if (statusCounts[asset.status] !== undefined) {
+                statusCounts[asset.status]++;
+            }
+        });
+
+        res.status(200).json({ message: 'Asset status counts fetched successfully.', data: statusCounts });
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching asset status counts.', error: error.message });
+    }
+}
+
+
+assetController.getAssetsCountByCategory = async (req, res) => {
+    try {
+        const assets = await All_Models.Asset.findAll({
+            attributes: ['categoryId'],
+            include: [
+                { model: All_Models.CategoryMaster, as: 'category', attributes: ['name'] }
+            ]
+        });
+
+        const categoryCounts = {};
+
+        assets.forEach(asset => {
+            const categoryName = asset.category ? asset.category.name : 'Unknown';
+            if (categoryCounts[categoryName]) {
+                categoryCounts[categoryName]++;
+            } else {
+                categoryCounts[categoryName] = 1;
+            }
+        });
+
+        res.status(200).json({ message: 'Asset counts by category fetched successfully.', data: categoryCounts });
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching asset counts by category.', error: error.message });
+    }
+}
+
 export default assetController;
 
 

@@ -121,8 +121,73 @@ router.post('/createAssets', assetController.createAssets);
  *       '200':
  *         description: Asset checkOut updated successfully
  */
-router.post('/checkOut', assetController.checkOutAsset);
+/**
+ * @swagger
+ * /asset/getAssetsByStatus:
+ *   get:
+ *     tags:
+ *       - Asset
+ *     summary: Get assets grouped by status
+ *     description: Returns all assets grouped by their status (Available, Assigned, Under Maintenance, Broken)
+ *     responses:
+ *       '200':
+ *         description: Assets grouped by status fetched successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     Available:
+ *                       type: array
+ *                       items:
+ *                         type: object
+ *                     Assigned:
+ *                       type: array
+ *                       items:
+ *                         type: object
+ *                     "Under Maintenance":
+ *                       type: array
+ *                       items:
+ *                         type: object
+ *                     Broken:
+ *                       type: array
+ *                       items:
+ *                         type: object
+ */
+router.get('/getAssetsByStatus', assetController.getAssetsByStatus);
 
+/**
+ * @swagger
+ * /asset/getAssetsCountByCategory:
+ *   get:
+ *     tags:
+ *       - Asset
+ *     summary: Get asset counts by category
+ *     description: Returns the count of assets grouped by their category
+ *     responses:
+ *       '200':
+ *         description: Asset counts by category fetched successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                 data:
+ *                   type: object
+ *                   additionalProperties:
+ *                     type: integer
+ *                   example:
+ *                     "Computer Assets": 5
+ *                     "External Equipments": 3
+ */
+router.get('/getAssetsCountByCategory', assetController.getAssetsCountByCategory);
 
 /**
  * @swagger
@@ -146,6 +211,47 @@ router.post('/checkOut', assetController.checkOutAsset);
  */
 router.delete('/deleteAssets', assetController.deleteAssets);
 
+
+/**
+ * @swagger
+ * /asset/getAssetsByStatus:
+ *   get:
+ *     tags:
+ *       - Asset     
+ *     summary: Get assets by status
+ *     description: Returns all assets grouped by their status (Available, Assigned, Under Maintenance, Broken)
+ *     responses:
+ *       '200':
+ *         description: Assets grouped by status fetched successfully
+ */
+router.get('/getAssetsByStatus', assetController.getAssetsByStatus);
+
+/**
+ * @swagger
+ * /asset/getAssetsCountByCategory:
+ *   get:
+ *     tags:
+ *       - Asset
+ *     summary: Get asset counts by category
+ *     description: Returns the count of assets grouped by their category
+ *     responses:
+ *       '200':
+ *         description: Asset counts by category fetched successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                 data:
+ *                   type: object
+ *                   additionalProperties:
+ *                     type: integer
+ *                   example:
+ *                     "Computer Assets": 5
+ *                     "External Equipments": 3
+ */
+router.get('/getAssetsCountByCategory', assetController.getAssetsCountByCategory);
+
 export default router;
-
-
